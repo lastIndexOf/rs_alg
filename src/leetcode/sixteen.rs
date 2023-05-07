@@ -1,5 +1,3 @@
-use std::iter::Sum;
-
 /// 给你一个长度为 n 的整数数组 nums 和 一个目标值 target。请你从 nums 中选出三个整数，使它们的和与 target 最接近。
 /// 返回这三个数的和。
 /// 假定每组输入只存在恰好一个解。
@@ -12,7 +10,6 @@ impl Solution {
 
         any_sum(&nums, &mut res, &mut vec![], 0, 3);
 
-        println!("res = {res:?} ");
         res[res
             .iter()
             .map(|item| (item.iter().sum::<i32>() - target).abs())
