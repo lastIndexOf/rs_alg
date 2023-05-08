@@ -6,4 +6,6 @@ pub mod linked_list;
 pub mod rb_tree;
 pub mod segment_tree;
 pub mod trie;
+// pub mod treap; // basically the same as AVL tree.
+pub mod graph;
 pub mod union_find;
