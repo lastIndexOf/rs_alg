@@ -5,5 +5,5 @@ pub mod heap;
 pub mod linked_list;
 pub mod rb_tree;
 pub mod segment_tree;
-// pub mod trie;
+pub mod trie;
 pub mod union_find;

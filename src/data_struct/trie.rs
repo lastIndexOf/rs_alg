@@ -1,3 +1,63 @@
+use std::{collections::HashMap, hash::Hash};
+
+pub struct Trie<K: Hash + Eq, V: Default> {
+    root: TrieNode<K, V>,
+    len: usize,
+}
+
+impl<K: Hash + Eq, V: Default> Trie<K, V> {
+    pub fn new() -> Self {
+        Trie {
+            root: Default::default(),
+            len: 0,
+        }
+    }
+
+    pub fn insert(&mut self, keys: impl IntoIterator<Item = K>, value: V) {
+        let mut node = &mut self.root;
+        for key in keys.into_iter() {
+            node = node.next.entry(key).or_insert(Default::default());
+        }
+        node.value = value;
+        self.len += 1;
+    }
+
+    pub fn get(&self, keys: impl IntoIterator<Item = K>) -> Option<&V> {
+        if self.is_empty() {
+            return None;
+        }
+
+        let mut node = &self.root;
+
+        for key in keys.into_iter() {
+            match node.next.get(&key) {
+                Some(key_node) => node = key_node,
+                _ => return None,
+            };
+        }
+
+        Some(&node.value)
+    }
+
+    pub fn is_empty(&self) -> bool {
+        self.len == 0
+    }
+}
+
+struct TrieNode<K: Hash + Eq, V: Default> {
+    value: V,
+    next: HashMap<K, TrieNode<K, V>>,
+}
+
+impl<K: Hash + Eq, V: Default> Default for TrieNode<K, V> {
+    fn default() -> Self {
+        Self {
+            value: Default::default(),
+            next: HashMap::new(),
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
 
