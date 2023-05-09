@@ -17,6 +17,9 @@ impl ListNode {
 pub struct Solution;
 
 impl Solution {
+    // clone 相当于把链表的值深拷贝了一份，不是最优解
+    // 下面的实现还是深拷贝了部分内存数据
+    // 可以直接在链表中存储原始指针
     // pub fn remove_nth_from_end(head: Option<Box<ListNode>>, n: i32) -> Option<Box<ListNode>> {
     //     let mut dummy_head = Box::new(ListNode::new(0));
     //     dummy_head.next = head;
