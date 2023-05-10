@@ -37,11 +37,11 @@ impl Solution {
                     }
                     res_mut = (*res_mut).next.as_mut().unwrap();
                 }
-                (Some(list1_node), None) => {
+                (Some(_), None) => {
                     (*res_mut).next = l1;
                     break;
                 }
-                (None, Some(list2_node)) => {
+                (None, Some(_)) => {
                     (*res_mut).next = l2;
                     break;
                 }
