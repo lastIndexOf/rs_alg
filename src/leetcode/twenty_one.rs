@@ -18,32 +18,31 @@ impl Solution {
         list1: Option<Box<ListNode>>,
         list2: Option<Box<ListNode>>,
     ) -> Option<Box<ListNode>> {
-        let mut list1 = list1.clone();
-        let mut list2 = list2.clone();
-        let mut res = Box::new(ListNode::new(0));
+        let mut l1 = list1;
+        let mut l2 = list2;
+        let mut res = Box::new(ListNode::new(Default::default()));
         let mut res_mut = &mut res;
 
         loop {
-            match (list1.as_mut(), list2.as_mut()) {
+            match (l1.as_mut(), l2.as_mut()) {
                 (Some(list1_node), Some(list2_node)) => {
                     if list1_node.val < list2_node.val {
-                        let node = list1_node.next.take();
-                        res_mut.next = list1;
-                        list1 = res_mut.next;
+                        let next = list1_node.next.take();
+                        (*res_mut).next = l1;
+                        l1 = next;
                     } else {
-                        let node = list2_node.next.take();
-                        res_mut.next = list2;
-                        list2 = res_mut.next;
+                        let next = list2_node.next.take();
+                        (*res_mut).next = l2;
+                        l2 = next;
                     }
+                    res_mut = (*res_mut).next.as_mut().unwrap();
                 }
                 (Some(list1_node), None) => {
-                    res_mut.next = list1_node.next.take();
-                    res_mut = res_mut.next.as_mut().unwrap();
+                    (*res_mut).next = l1;
                     break;
                 }
                 (None, Some(list2_node)) => {
-                    res_mut.next = list2_node.next.take();
-                    res_mut = res_mut.next.as_mut().unwrap();
+                    (*res_mut).next = l2;
                     break;
                 }
                 (None, None) => break,
