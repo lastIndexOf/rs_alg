@@ -3,9 +3,9 @@ pub struct Solution;
 impl Solution {
     pub fn generate_parenthesis(n: i32) -> Vec<String> {
         let mut res = vec![];
-
+        // 回溯法，可以解决
+        // 还有一种思路，把结果看成二叉树，使用 DFS
         do_generate_parenthesis(&mut res, &mut vec![], &mut String::new(), 0, 2 * n);
-
         res
     }
 }
