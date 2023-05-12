@@ -36,27 +36,49 @@ impl Solution {
     //     return dummy_head.next;
     // }
 
-    pub fn remove_nth_from_end(head: &mut Box<ListNode>, n: i32) -> Option<&Box<ListNode>> {
-        let mut faster = &mut **head as *mut ListNode;
-        let mut slower = &mut **head as *mut ListNode;
+    // pub fn remove_nth_from_end(head: &mut Box<ListNode>, n: i32) -> Option<&Box<ListNode>> {
+    //     let mut faster = &mut **head as *mut ListNode;
+    //     let mut slower = &mut **head as *mut ListNode;
 
-        unsafe {
-            for _ in 0..n {
-                if (*faster).next.is_none() {
-                    return head.next.as_ref();
-                }
-                faster = &mut **((*faster).next.as_mut().unwrap()) as *mut ListNode;
-            }
+    //     unsafe {
+    //         for _ in 0..n {
+    //             if (*faster).next.is_none() {
+    //                 return head.next.as_ref();
+    //             }
+    //             faster = &mut **((*faster).next.as_mut().unwrap()) as *mut ListNode;
+    //         }
 
-            while !(*faster).next.is_none() {
-                faster = &mut **((*faster).next.as_mut().unwrap()) as *mut ListNode;
-                slower = &mut **((*slower).next.as_mut().unwrap()) as *mut ListNode;
-            }
+    //         while !(*faster).next.is_none() {
+    //             faster = &mut **((*faster).next.as_mut().unwrap()) as *mut ListNode;
+    //             slower = &mut **((*slower).next.as_mut().unwrap()) as *mut ListNode;
+    //         }
 
-            (*slower).next = (*slower).next.as_ref().unwrap().next.clone();
+    //         (*slower).next = (*slower).next.as_ref().unwrap().next.clone();
 
-            Some(head)
+    //         Some(head)
+    //     }
+    // }
+
+    pub fn remove_nth_from_end(head: Option<Box<ListNode>>, n: i32) -> Option<Box<ListNode>> {
+        let mut res = Box::new(ListNode::new(Default::default()));
+        res.next = head.clone();
+
+        let mut faster = &head;
+        let mut slower = &mut res;
+
+        for _ in 0..n {
+            faster = &faster.as_ref().unwrap().next;
         }
+
+        while faster.is_some() {
+            faster = &faster.as_ref().unwrap().next;
+            slower = slower.next.as_mut().unwrap();
+        }
+
+        let removed_one = slower.next.take().unwrap();
+        slower.next = removed_one.next;
+
+        res.next
     }
 }
 
@@ -91,11 +113,12 @@ mod nineteen_test {
             .unwrap()
             .next = Some(Box::new(ListNode::new(5)));
 
-        let mut linked_list = &mut Box::new(linked_list);
+        // let mut linked_list = &mut Box::new(linked_list);
+        // assert_eq!(format!("{:?}", Solution::remove_nth_from_end(&mut linked_list, 3)), "Some(ListNode { val: 1, next: Some(ListNode { val: 2, next: Some(ListNode { val: 4, next: Some(ListNode { val: 5, next: None }) }) }) })");
+        let linked_list = Box::new(linked_list);
+        assert_eq!(format!("{:?}", Solution::remove_nth_from_end(Some(linked_list), 3)), "Some(ListNode { val: 1, next: Some(ListNode { val: 2, next: Some(ListNode { val: 4, next: Some(ListNode { val: 5, next: None }) }) }) })");
 
-        assert_eq!(format!("{:?}", Solution::remove_nth_from_end(&mut linked_list, 3)), "Some(ListNode { val: 1, next: Some(ListNode { val: 2, next: Some(ListNode { val: 4, next: Some(ListNode { val: 5, next: None }) }) }) })");
-
-        println!("linked_list = {linked_list:?}");
+        // println!("linked_list = {linked_list:?}");
         // assert_eq!(format!("{:?}", Solution::remove_nth_from_end(&mut linked_list, 1)), "Some(ListNode { val: 2, next: Some(ListNode { val: 3, next: Some(ListNode { val: 4, next: None }) }) })");
     }
 }
