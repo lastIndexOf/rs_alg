@@ -1,5 +1,3 @@
-use std::println;
-
 pub struct Solution;
 
 // Definition for singly-linked list.
@@ -40,6 +38,7 @@ impl Solution {
                                 break;
                             }
 
+                            // 核心代码，所有权转移后要通过最终拥有其所有权的那个变量来获取可变引用
                             parent = parent.next.as_mut().unwrap().next.as_mut().unwrap();
                         }
                         None => {
