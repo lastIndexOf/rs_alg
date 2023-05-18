@@ -1,5 +1,3 @@
-use std::print;
-
 pub struct Solution;
 
 impl Solution {
