@@ -7,6 +7,7 @@ pub mod seventeen;
 pub mod sixteen;
 pub mod ten;
 pub mod thirty;
+pub mod thirty_one;
 pub mod twelve;
 pub mod twenty;
 pub mod twenty_eight;

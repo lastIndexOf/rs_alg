@@ -25,11 +25,6 @@ impl Solution {
             let sub_str = &s[i..(i + sub_str_len)];
             for j in 0..word_count {
                 let start = j * word_len;
-                // println!(
-                //     "sub_str = {sub_str}, {} {:?}",
-                //     &sub_str[start..(start + word_len)],
-                //     map
-                // );
                 if map.contains_key(&sub_str[start..(start + word_len)]) {
                     *(map.get_mut(&sub_str[start..(start + word_len)]).unwrap()) -= 1;
                 } else {
