@@ -6,7 +6,6 @@ impl Solution {
             for j in (0..i).rev() {
                 if nums[i] > nums[j] {
                     nums.swap(i, j);
-                    println!("{nums:?} {i} {j}");
                     nums[(j + 1)..].sort_unstable();
                     return;
                 }
@@ -40,5 +39,9 @@ mod thirty_one_test {
         let mut arr = vec![1, 3, 2];
         Solution::next_permutation(&mut arr);
         assert_eq!(arr, vec![2, 1, 3]);
+
+        let mut arr = vec![4, 2, 0, 2, 3, 2, 0];
+        Solution::next_permutation(&mut arr);
+        assert_eq!(arr, vec![4, 2, 0, 3, 0, 2, 2]);
     }
 }
