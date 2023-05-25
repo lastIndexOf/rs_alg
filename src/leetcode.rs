@@ -10,6 +10,8 @@ pub mod ten;
 pub mod thirty;
 /// ! 未完成
 pub mod thirty_one;
+pub mod thirty_three;
+/// ! 动态规划的解法看一下
 pub mod thirty_two;
 pub mod twelve;
 pub mod twenty;
