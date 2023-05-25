@@ -2,17 +2,15 @@ pub struct Solution;
 
 impl Solution {
     pub fn longest_valid_parentheses(s: String) -> i32 {
-        let s = s.chars().collect::<Vec<_>>();
+        let s = s.as_bytes();
         let len = s.len();
         let mut res = 0;
         let mut start = 0;
-        let mut idx = 0;
         let mut stack = vec![];
 
-        while idx < len {
-            if s[idx] == '(' {
+        for idx in 0..len {
+            if s[idx] == b'(' {
                 stack.push(idx);
-                idx += 1;
             } else {
                 match stack.pop() {
                     Some(_) => {
@@ -21,11 +19,9 @@ impl Solution {
                         } else {
                             res = std::cmp::max(res, idx - stack.last().unwrap());
                         }
-                        idx += 1;
                     }
                     None => {
-                        idx += 1;
-                        start = idx;
+                        start = idx + 1;
                     }
                 }
             }
