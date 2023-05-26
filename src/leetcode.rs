@@ -8,6 +8,7 @@ pub mod sixteen;
 pub mod ten;
 ///! 慢速方法，需要优化
 pub mod thirty;
+pub mod thirty_four;
 /// ! 未完成
 pub mod thirty_one;
 pub mod thirty_three;
