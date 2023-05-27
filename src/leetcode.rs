@@ -6,15 +6,14 @@ pub mod nineteen;
 pub mod seventeen;
 pub mod sixteen;
 pub mod ten;
-///! 慢速方法，需要优化
-pub mod thirty;
+pub mod thirty; // 慢速方法，需要优化
 pub mod thirty_five;
 pub mod thirty_four;
-/// ! 未完成
-pub mod thirty_one;
+pub mod thirty_one; // 未完成
+pub mod thirty_seven;
+pub mod thirty_six;
 pub mod thirty_three;
-/// ! 动态规划的解法看一下
-pub mod thirty_two;
+pub mod thirty_two; // 动态规划的解法看一下
 pub mod twelve;
 pub mod twenty;
 pub mod twenty_eight;
