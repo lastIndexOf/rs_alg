@@ -2,6 +2,10 @@ pub struct Solution;
 
 impl Solution {
     pub fn multiply(num1: String, num2: String) -> String {
+        if num1 == "0" || num2 == "0" {
+            return "0".to_string();
+        }
+
         let num1 = num1.as_bytes();
         let num2 = num2.as_bytes();
         let len = num2.len() + num1.len();
@@ -31,17 +35,10 @@ impl Solution {
             // println!("res = {res:?}");
         }
 
-        let res = res
-            .into_iter()
+        res.into_iter()
             .skip_while(|cr| *cr == 0)
             .map(|cr| (cr + b'0') as char)
-            .collect::<String>();
-
-        if res.is_empty() {
-            return "0".to_string();
-        }
-
-        res
+            .collect::<String>()
     }
 }
 
