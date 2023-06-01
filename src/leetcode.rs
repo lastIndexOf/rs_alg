@@ -3,6 +3,7 @@ pub mod eighteen;
 pub mod fifteen;
 pub mod forty;
 pub mod forty_one; // hard，看答案求解，need review
+pub mod forty_three;
 pub mod forty_two;
 pub mod fourteen;
 pub mod nineteen;
