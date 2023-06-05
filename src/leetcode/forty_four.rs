@@ -11,9 +11,8 @@ impl Solution {
         p: &'a [u8],
         map: &mut std::collections::HashMap<&'a [u8], bool>,
     ) -> bool {
-        match map.get(s) {
-            Some(val) => return *val,
-            _ => {}
+        if let Some(_) = map.get(&s) {
+            return false;
         }
 
         let mut si = 0;
@@ -41,7 +40,7 @@ impl Solution {
 
             for i in pi..p.len() {
                 if p[i] != b'*' {
-                    map.insert(&s, false);
+                    map.insert(s, false);
                     return false;
                 }
             }
@@ -50,7 +49,7 @@ impl Solution {
         }
 
         if pi >= p.len() {
-            map.insert(&s, false);
+            map.insert(s, false);
             return false;
         }
 
