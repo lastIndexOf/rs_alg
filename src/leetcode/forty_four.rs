@@ -6,13 +6,14 @@ impl Solution {
         Self::is_match_str(&s.as_bytes(), &p.as_bytes(), &mut map)
     }
 
-    fn is_match_str<'a, 'b: 'a>(
-        s: &'b [u8],
-        p: &'b [u8],
+    fn is_match_str<'a>(
+        s: &'a [u8],
+        p: &'a [u8],
         map: &mut std::collections::HashMap<&'a [u8], bool>,
     ) -> bool {
-        if map.contains_key(s) {
-            return *map.get(s).unwrap();
+        match map.get(s) {
+            Some(val) => return *val,
+            _ => {}
         }
 
         let mut si = 0;
