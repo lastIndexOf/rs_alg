@@ -5,6 +5,7 @@ pub mod forty;
 pub mod forty_eight;
 pub mod forty_five;
 pub mod forty_four; // hard, 动态规划的解法学习一下，学思路
+pub mod forty_night;
 pub mod forty_one; // hard，看答案求解，need review
 pub mod forty_seven; // 回溯 + hashmap，时间空间不是最优，后续看下标准解答
 pub mod forty_six;
