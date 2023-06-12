@@ -1,6 +1,7 @@
 pub mod eight;
 pub mod eighteen;
 pub mod fifteen;
+pub mod fifty;
 pub mod forty;
 pub mod forty_eight;
 pub mod forty_five;
