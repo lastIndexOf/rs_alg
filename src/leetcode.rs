@@ -3,6 +3,7 @@ pub mod eighteen;
 pub mod fifteen;
 pub mod fifty; // 实现 pow，利用折半法，每次计算 n / 2次幂
 pub mod fifty_one;
+pub mod fifty_two;
 pub mod forty;
 pub mod forty_eight;
 pub mod forty_five;

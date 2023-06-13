@@ -1,28 +1,17 @@
 pub struct Solution;
 
 impl Solution {
-    pub fn solve_n_queens(n: i32) -> Vec<Vec<String>> {
-        let mut res = vec![];
+    pub fn total_n_queens(n: i32) -> i32 {
+        let mut res = 0;
 
         Self::do_solve_n_queens(&mut res, &mut vec![], 0, n);
 
         res
     }
 
-    fn do_solve_n_queens(
-        res: &mut Vec<Vec<String>>,
-        current: &mut Vec<Vec<char>>,
-        start: i32,
-        n: i32,
-    ) -> bool {
+    fn do_solve_n_queens(res: &mut i32, current: &mut Vec<Vec<char>>, start: i32, n: i32) -> bool {
         if start == n {
-            res.push(
-                current
-                    .clone()
-                    .into_iter()
-                    .map(|item| item.into_iter().collect::<String>())
-                    .collect::<Vec<_>>(),
-            );
+            *res += 1;
             return true;
         }
 
@@ -66,18 +55,12 @@ impl Solution {
 }
 
 #[cfg(test)]
-mod fifty_one_test {
+mod fifty_two_test {
     use super::*;
 
     #[test]
-    fn test_fifty_one() {
-        assert_eq!(
-            Solution::solve_n_queens(4),
-            [
-                [".Q..", "...Q", "Q...", "..Q."],
-                ["..Q.", "Q...", "...Q", ".Q.."]
-            ]
-        );
-        assert_eq!(Solution::solve_n_queens(1), [["Q"]]);
+    fn test_fifty_two() {
+        assert_eq!(Solution::total_n_queens(4), 2);
+        assert_eq!(Solution::total_n_queens(1), 1);
     }
 }
