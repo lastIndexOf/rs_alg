@@ -2,8 +2,9 @@ pub mod eight;
 pub mod eighteen;
 pub mod fifteen;
 pub mod fifty; // 实现 pow，利用折半法，每次计算 n / 2次幂
+pub mod fifty_four;
 pub mod fifty_one;
-pub mod fifty_three; // 动态规划求解
+pub mod fifty_three; // 最大子数组，动态规划求解
 pub mod fifty_two; // 经典 N 皇后问题，回溯解法。后续研究一下 DFS 解法
 pub mod forty;
 pub mod forty_eight;
