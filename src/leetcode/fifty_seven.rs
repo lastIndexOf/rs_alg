@@ -1,7 +1,13 @@
 pub struct Solution;
 
 impl Solution {
-    pub fn merge(intervals: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
+    pub fn insert(intervals: Vec<Vec<i32>>, new_interval: Vec<i32>) -> Vec<Vec<i32>> {
+        let mut intervals = intervals;
+        intervals.push(new_interval);
+        Self::merge(intervals)
+    }
+
+    fn merge(intervals: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
         let mut intervals = intervals;
         intervals.sort_by_key(|item| item[0]);
         let mut res = Vec::with_capacity(intervals.len() * 2);
@@ -42,27 +48,7 @@ impl Solution {
 }
 
 #[cfg(test)]
-mod fifty_six_test {
-    use super::*;
-
+mod fifty_seven_test {
     #[test]
-    fn test_fifty_six() {
-        assert_eq!(
-            Solution::merge(vec![vec![1, 3], vec![2, 6], vec![8, 10], vec![15, 18]]),
-            [[1, 6], [8, 10], [15, 18]]
-        );
-        assert_eq!(Solution::merge(vec![vec![1, 4], vec![4, 5]]), [[1, 5]]);
-        assert_eq!(Solution::merge(vec![vec![1, 4], vec![0, 4]]), [[0, 4]]);
-        assert_eq!(Solution::merge(vec![vec![1, 4], vec![2, 3]]), [[1, 4]]);
-        assert_eq!(
-            Solution::merge(vec![
-                vec![2, 3],
-                vec![4, 5],
-                vec![6, 7],
-                vec![8, 9],
-                vec![1, 10]
-            ]),
-            [[1, 10]]
-        );
-    }
+    fn test_fifty_seven() {}
 }
