@@ -5,6 +5,7 @@ pub mod fifty; // 实现 pow，利用折半法，每次计算 n / 2次幂
 pub mod fifty_eight;
 pub mod fifty_five; // 经典从尾部开始遍历 On 算法，改变目标点
 pub mod fifty_four; // 螺旋矩阵，笨方法
+pub mod fifty_nine;
 pub mod fifty_one;
 pub mod fifty_seven;
 pub mod fifty_six;
