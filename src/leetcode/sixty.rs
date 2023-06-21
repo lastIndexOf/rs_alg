@@ -53,13 +53,10 @@ impl Solution {
         let mut list = Vec::with_capacity(n as usize);
         for bit in bit_vec {
             let bit = bit as usize;
-            let a = nums.drain((bit - 1)..bit).next().unwrap();
-            list.push(a);
+            list.push(nums.drain((bit - 1)..bit).next().unwrap() as u8 + b'0');
         }
 
-        list.iter()
-            .map(|num| std::char::from_digit(*num as u32, 10).unwrap())
-            .collect::<String>()
+        String::from_utf8(list).unwrap()
     }
 }
 
