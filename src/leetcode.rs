@@ -26,6 +26,7 @@ pub mod nineteen;
 pub mod seventeen;
 pub mod seventy;
 pub mod seventy_one;
+pub mod seventy_three;
 pub mod seventy_two;
 pub mod sixteen;
 pub mod sixty;
