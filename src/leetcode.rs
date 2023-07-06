@@ -28,6 +28,7 @@ pub mod seventy;
 pub mod seventy_five;
 pub mod seventy_four;
 pub mod seventy_one;
+pub mod seventy_six; // 滑动窗口，最短字串匹配多个字符
 pub mod seventy_three;
 pub mod seventy_two;
 pub mod sixteen;
