@@ -1,5 +1,6 @@
 pub mod eight;
 pub mod eighteen;
+pub mod eighty;
 pub mod fifteen;
 pub mod fifty; // 实现 pow，利用折半法，每次计算 n / 2次幂
 pub mod fifty_eight;
@@ -28,7 +29,7 @@ pub mod seventy;
 pub mod seventy_eight;
 pub mod seventy_five;
 pub mod seventy_four;
-pub mod seventy_nine;
+pub mod seventy_nine; // 经典回溯 or DFS
 pub mod seventy_one;
 pub mod seventy_seven;
 pub mod seventy_six; // 滑动窗口，最短字串匹配多个字符
