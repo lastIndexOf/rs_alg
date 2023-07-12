@@ -1,7 +1,9 @@
 pub mod eight;
 pub mod eighteen;
 pub mod eighty; // 经典双指针，代码比较挫，可以参考下标准解答优化
-pub mod eighty_one;
+pub mod eighty_one; // 二分查找判重问题，细节问题回顾下
+pub mod eighty_three;
+pub mod eighty_two;
 pub mod fifteen;
 pub mod fifty; // 实现 pow，利用折半法，每次计算 n / 2次幂
 pub mod fifty_eight;
