@@ -18,27 +18,46 @@ impl Solution {
     pub fn delete_duplicates(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
         let mut root = Box::new(ListNode::new(-1));
         root.next = head;
-        let mut next = &mut root.next;
-        let mut prev_val = None;
+        let mut root = Some(root);
 
-        while let Some(node) = next.as_mut() {
-            if let Some(prev) = prev_val {
-                if prev == node.val {
-                    let next_node = node.next.take().unwrap();
-                    *node = next_node;
-                    prev_val = Some(node.val);
-                    next = &mut node.next;
+        let mut current = &mut root;
+        let mut prev_val = None;
+        let mut repeat = false;
+
+        while let Some(current_node) = current.as_ref() {
+            if let Some(next_node) = current_node.next.as_ref() {
+                if let Some(val) = prev_val {
+                    if val == next_node.val {
+                        repeat = true;
+                        let next = current.as_mut().unwrap().next.as_mut().unwrap().next.take();
+                        current.as_mut().unwrap().next = next;
+                    } else {
+                        if val == current_node.val && repeat {
+                            let next = current.as_mut().unwrap().next.take();
+                            *current = next;
+                            prev_val = Some(current.as_ref().unwrap().val);
+                        } else {
+                            prev_val = Some(next_node.val);
+                            current = &mut current.as_mut().unwrap().next;
+                        }
+                        repeat = false;
+                    }
                 } else {
-                    prev_val = Some(node.val);
-                    next = &mut node.next;
+                    prev_val = Some(next_node.val);
+                    current = &mut current.as_mut().unwrap().next;
                 }
             } else {
-                prev_val = Some(node.val);
-                next = &mut node.next;
+                if let Some(val) = prev_val {
+                    if repeat && val == current_node.val {
+                        *current = None;
+                    }
+                }
+
+                break;
             }
         }
 
-        root.next
+        root.unwrap().next
     }
 }
 
